@@ -12,7 +12,7 @@ function NavBar() {
 
   const Logout=()=>{
     localStorage.removeItem('userInfo') 
-
+window.location.reload()
   }
   return (
     <Navbar collapseOnSelect expand="lg" bg="black" variant="dark">
@@ -51,7 +51,7 @@ function NavBar() {
               <h4>Login</h4>
             </Nav.Link>
             <Nav.Link
-              onClick={Logout} as={Link} to="/login"
+              onClick={Logout} as={Link} 
               className=" mt-xxl-2 mt-lg-0  mt-xl-0 text-light "
             >
               <h4>Logout</h4>

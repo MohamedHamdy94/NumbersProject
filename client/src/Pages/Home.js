@@ -1,19 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getNumInfo, setSearch } from '../redux/actions/numAcion';
 import { useDispatch, useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import { Button, Col, Row, Card, Container } from 'react-bootstrap';
 import SpinnerComponent from '../Components/Spinner/Spinner';
-import { useNavigate } from 'react-router-dom';
-import NHOC from '../Components/NHOC';
-function HOC() {
+import HOC from '../Components/HOC';
+function Home() {
   const [num, setnum] = useState('');
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const number = useSelector((state) => state.Numbers.number);
-  const message = useSelector((state) => state.Numbers.message);
   const loading = useSelector((state) => state.Loader.loader);
   const submitHandler = async (e) => {
     console.log(num);
@@ -96,6 +93,5 @@ function HOC() {
     </Container>
   );
 }
-
-
-export default NHOC(HOC);
+// const HomeComponent= HOC(Home)
+export default Home

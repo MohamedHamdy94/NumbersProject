@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { getAllSearch } from '../redux/actions/numAcion';
 import { useDispatch, useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
-import { Button, Col, Row, Card, Container } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import SpinnerComponent from '../Components/Spinner/Spinner';
 import { useNavigate } from 'react-router-dom';
 import ChildCard from '../Components/ChildCard/ChildCard';
-import NHOC from '../Components/NHOC';
+import HOC from '../Components/HOC';
 
-function searchResult() {
+function SearchResult() {
   // 14158586273
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,7 +19,6 @@ function searchResult() {
     console.log(searchNumbers);
   }, []);
   const searchNumbers = useSelector((state) => state.Numbers.searchResult);
-
 
   return (
     <>
@@ -78,4 +77,4 @@ function searchResult() {
   );
 }
 
-export default NHOC(searchResult);
+export default HOC(SearchResult);

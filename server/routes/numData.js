@@ -12,7 +12,9 @@ numData.get('/:number', async (req, res) => {
     numInfo._id = new mongoose.Types.ObjectId();
     const saveSearch = await SearchResult.insertMany(numInfo);
   } else {
-    const saveSearch = await SearchResult.insertMany({ number: req.params.number });
+    const saveSearch = await SearchResult.insertMany({
+      number: req.params.number,
+    });
     res.send(numInfo);
   }
 });
