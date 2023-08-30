@@ -5,15 +5,14 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-
 function NavBar() {
   const navigate = useNavigate();
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-  const Logout=()=>{
-    localStorage.removeItem('userInfo') 
-window.location.reload()
-  }
+  const Logout = () => {
+    localStorage.removeItem('userInfo');
+    window.location.reload();
+  };
   return (
     <Navbar collapseOnSelect expand="lg" bg="black" variant="dark">
       <Container fluid>
@@ -24,7 +23,7 @@ window.location.reload()
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav
             className="me-5 my-2 my-lg-0 "
-            style={{ maxHeight: '100px' }}
+            //  style={{ maxHeight: '100px' }}
             navbarScroll
           >
             <Nav.Link
@@ -34,7 +33,7 @@ window.location.reload()
             >
               <h4>Home</h4>
             </Nav.Link>
-  
+
             <Nav.Link
               as={Link}
               to="/SearchResult"
@@ -42,22 +41,27 @@ window.location.reload()
             >
               <h4> History</h4>
             </Nav.Link>
+            <Nav.Link className="w-25"> </Nav.Link>
+            {!userInfo && (
+              <Nav.Link
+                as={Link}
+                to="/login"
+                className="ps-5 mt-xxl-2 mt-lg-0  mt-xl-0 text-light "
+              >
+                <h4>Login</h4>
+              </Nav.Link>
+            )}
 
-            <Nav.Link
-              as={Link}
-              to="/login"
-              className="ps-5 mt-xxl-2 mt-lg-0  mt-xl-0 text-light "
-            >
-              <h4>Login</h4>
-            </Nav.Link>
-            <Nav.Link
-              onClick={Logout} as={Link} 
-              className=" mt-xxl-2 mt-lg-0  mt-xl-0 text-light "
-            >
-              <h4>Logout</h4>
-            </Nav.Link>
-            </Nav>
-
+            {userInfo && (
+              <Nav.Link
+                onClick={Logout}
+                as={Link}
+                className=" mt-xxl-2 mt-lg-0  mt-xl-0 text-light "
+              >
+                <h4>Logout</h4>
+              </Nav.Link>
+            )}
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

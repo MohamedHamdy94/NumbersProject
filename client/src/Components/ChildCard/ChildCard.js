@@ -3,8 +3,10 @@ import Card from 'react-bootstrap/Card';
 
 
 export default function ChildCard(props) {
-
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const { number } = props;
+  const event = new Date(number.updatedAt);
+//       <Card.Footer>Date: {new Date(number.updatedAt).toDateString()}</Card.Footer>
 
   return (
     <Card>
@@ -53,7 +55,7 @@ Phone Number not Found
        
 
       </Card.Body>
-      <Card.Footer>Date: {number.updatedAt}</Card.Footer>
+      <Card.Footer>Date: {event.toLocaleString()}</Card.Footer>
     </Card>
   );
 }

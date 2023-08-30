@@ -8,10 +8,12 @@ import numData from './routes/numData.js';
 import search from './routes/search.js';
 import seedRouter from './routes/seedRoutes.js';
 
+
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json({limit:'100kb'}));
 dotenv.config();
+
 
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -21,6 +23,7 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
+
 
 app.use('/api/seed', seedRouter);
 app.use('/api/searchnumder', numData);

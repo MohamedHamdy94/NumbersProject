@@ -14,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/SearchResult" element={<HOC />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </Container>
     </BrowserRouter>
